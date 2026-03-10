@@ -54,7 +54,12 @@
       align-items: center;
       justify-content: center;
       margin: 0 auto 20px;
-      font-size: 28px;
+    }
+    .value-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--red);
+      stroke-width: 1.75;
     }
     .value-card h3 {
       margin-bottom: 12px;
@@ -119,6 +124,7 @@
       .about-image img { height: auto; object-fit: contain; }
     }
   </style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 
@@ -194,17 +200,17 @@
       </div>
       <div class="values-grid">
         <div class="value-card">
-          <div class="value-icon">&#10084;&#65039;</div>
+          <div class="value-icon"><i data-lucide="heart"></i></div>
           <h3>Patient First</h3>
           <p>Every decision we make starts with the patient. Your comfort, mobility, and independence are our top priorities.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">&#129309;</div>
+          <div class="value-icon"><i data-lucide="users"></i></div>
           <h3>Lifelong Relationships</h3>
           <p>We build lasting partnerships with our patients. Many have trusted us for over 20 years because we never stop caring.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">&#127942;</div>
+          <div class="value-icon"><i data-lucide="award"></i></div>
           <h3>Clinical Excellence</h3>
           <p>Decades of combined experience, ongoing education, and the latest technology ensure you receive the best care possible.</p>
         </div>
@@ -392,6 +398,7 @@
         document.querySelector('.nav-links').classList.remove('show');
       });
     });
+    lucide.createIcons();
   </script>
 </body>
 </html>
