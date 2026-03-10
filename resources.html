@@ -127,6 +127,9 @@
     @media (max-width: 640px) {
       .process-section { grid-template-columns: 1fr; }
     }
+    @media (max-width: 968px) {
+      .what-to-bring-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    }
   </style>
 </head>
 <body>
@@ -252,7 +255,7 @@
   <!-- ═══ WHAT TO BRING ═══ -->
   <section class="section gray-bg">
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+      <div class="what-to-bring-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
         <div>
           <p class="section-label">Be Prepared</p>
           <h2 class="section-heading">What to Bring</h2>
@@ -378,6 +381,11 @@
   <script>
     window.addEventListener('scroll', () => {
       document.getElementById('siteNav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('show');
+      });
     });
   </script>
 </body>

@@ -118,6 +118,7 @@
 
     @media (max-width: 968px) {
       .contact-layout { grid-template-columns: 1fr; }
+      .riverside-bottom-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
     }
   </style>
 </head>
@@ -295,7 +296,7 @@
   <!-- ═══ RIVERSIDE QUICK INFO ═══ -->
   <section class="section dark-bg">
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+      <div class="riverside-bottom-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
         <div>
           <p class="section-label" style="color: var(--red-light);">Monthly Clinic</p>
           <h2 style="color: var(--white); margin-bottom: 16px;">Riverside P&amp;O Clinic</h2>
@@ -384,6 +385,11 @@
   <script>
     window.addEventListener('scroll', () => {
       document.getElementById('siteNav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('show');
+      });
     });
   </script>
 </body>
