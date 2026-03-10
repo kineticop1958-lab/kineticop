@@ -34,8 +34,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
       margin-bottom: 20px;
+    }
+    .resource-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--red);
+      stroke-width: 1.75;
     }
     .resource-card h3 {
       margin-bottom: 12px;
@@ -131,6 +136,7 @@
       .what-to-bring-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
     }
   </style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 
@@ -180,11 +186,13 @@
       </div>
       <div class="resources-grid">
         <div class="resource-card">
+          <div class="resource-icon"><i data-lucide="clipboard-list"></i></div>
           <h3>Patient Intake Form</h3>
           <p>Complete your patient information, medical history, HIPAA acknowledgment, and assignment of benefits — all in one PDF. Fill it out digitally or print and complete by hand, then email to us or bring to your appointment.</p>
           <a href="forms/Patient_Info_Medical_History_HIPAA_AOB.pdf" class="btn btn-primary" download>Download PDF</a>
         </div>
         <div class="resource-card">
+          <div class="resource-icon"><i data-lucide="file-heart"></i></div>
           <h3>Diabetic Shoe Info Sheet</h3>
           <p>Learn about our Medicare-covered diabetic shoe program, eligibility requirements, what to bring, and frequently asked questions about diabetic footwear.</p>
           <a href="forms/Diabetic_Patient_Info_Sheet.pdf" class="btn btn-outline" download>Download Info Sheet</a>
@@ -385,6 +393,7 @@
         document.querySelector('.nav-links').classList.remove('show');
       });
     });
+    lucide.createIcons();
   </script>
 </body>
 </html>
