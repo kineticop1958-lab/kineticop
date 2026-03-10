@@ -379,20 +379,13 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
 }
 
 .card-img {
-  height: 220px;
   background: var(--light-gray);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--medium-gray);
-  font-size: 48px;
-  position: relative;
   overflow: hidden;
 }
 .card-img img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
 }
 
 .card-body {
@@ -847,7 +840,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   .nav-toggle { padding: 10px; }
   .form-card { padding: 24px 20px; }
   .testimonial-card--home { margin-top: 16px; }
-  .testimonial-photo { position: static; display: block; margin: 0 auto 20px; }
+  .testimonial-photo { position: static; display: block; margin: 0 auto 20px; width: 100px; height: 100px; }
 }
 
 @media (max-width: 640px) {
