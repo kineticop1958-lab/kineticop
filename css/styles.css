@@ -727,7 +727,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
 }
 .footer-brand img {
   height: 45px;
-  filter: brightness(0) invert(1);
+  /* logo-dark JPEG – no filter needed on dark footer */
 }
 .footer-col h4 {
   font-family: var(--font-main);
@@ -858,4 +858,207 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   .hero-buttons .btn { text-align: center; justify-content: center; }
   .testimonial-card { padding: 32px 20px; }
   .form-card { padding: 20px 16px; }
+}
+
+/* ─── Dark Mode ─── */
+[data-theme="dark"] {
+  --white: #1e1e20;
+  --black: #ececec;
+  --dark-gray: #d0d0d0;
+  --medium-gray: #909090;
+  --light-gray: #26262a;
+  --border-gray: #383838;
+  --red-tint: rgba(236, 28, 38, 0.18);
+}
+
+/* Dark sections stay properly dark (--black inverts in dark mode, so override) */
+[data-theme="dark"] .page-header {
+  background: linear-gradient(135deg, #0d0d0f 0%, #1a1a1e 100%);
+  color: #fff;
+}
+[data-theme="dark"] .section.dark-bg {
+  background: #0d0d0f;
+}
+[data-theme="dark"] .site-footer {
+  background: #0d0d0f;
+}
+[data-theme="dark"] .riverside-banner {
+  background: linear-gradient(135deg, #0d0d0f 0%, #1a1a1e 100%);
+}
+
+/* Nav adjustments */
+[data-theme="dark"] .site-nav {
+  box-shadow: 0 1px 0 var(--border-gray);
+}
+[data-theme="dark"] .site-nav.scrolled {
+  box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+[data-theme="dark"] .nav-links {
+  background: var(--white);
+  border-top-color: var(--border-gray);
+}
+[data-theme="dark"] .nav-links a {
+  border-bottom-color: var(--border-gray);
+}
+
+/* Buttons in dark sections — keep them visually white/light */
+[data-theme="dark"] .btn-white {
+  background: rgba(255,255,255,0.92);
+  color: #1a1a1a;
+  border-color: rgba(255,255,255,0.92);
+}
+[data-theme="dark"] .btn-white:hover {
+  background: rgba(255,255,255,0.82);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+[data-theme="dark"] .btn-outline-white {
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.4);
+}
+[data-theme="dark"] .btn-outline-white:hover {
+  background: rgba(255,255,255,0.9);
+  color: #1a1a1a;
+}
+
+/* Softer shadows in dark mode */
+[data-theme="dark"] .card,
+[data-theme="dark"] .contact-card,
+[data-theme="dark"] .form-card,
+[data-theme="dark"] .testimonial-card,
+[data-theme="dark"] .value-card,
+[data-theme="dark"] .resource-card {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+
+/* FAQ adjustments */
+[data-theme="dark"] .faq-item {
+  border-bottom-color: var(--border-gray);
+}
+[data-theme="dark"] .faq-question {
+  color: var(--black);
+}
+
+/* ─── Dark Mode Toggle Button ─── */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: var(--dark-gray);
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  color: var(--red);
+  background: var(--light-gray);
+}
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+/* Light mode: show moon (click to go dark) */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+/* Dark mode: show sun (click to go light) */
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+/* ─── Dark Mode Extra Readability Fixes ─── */
+/* Elevate card surfaces so they stand out from page background */
+[data-theme="dark"] .card,
+[data-theme="dark"] .contact-card,
+[data-theme="dark"] .form-card,
+[data-theme="dark"] .testimonial-card,
+[data-theme="dark"] .value-card,
+[data-theme="dark"] .resource-card,
+[data-theme="dark"] .still-questions {
+  background: #28282c;
+}
+
+/* Insurance logos in dark mode */
+[data-theme="dark"] .insurance-logo {
+  background: #28282c;
+  border-color: var(--border-gray);
+  color: #bbb;
+}
+
+/* Service list borders: hardcoded #f0f0f0 becomes visible white, tone it down */
+[data-theme="dark"] .service-list li,
+[data-theme="dark"] .hours-table td {
+  border-bottom-color: var(--border-gray);
+}
+
+/* FAQ group title border */
+[data-theme="dark"] .faq-group-title {
+  border-bottom-color: rgba(236,28,38,0.3);
+}
+
+/* Contact form success */
+[data-theme="dark"] #form-success {
+  background: #0f2a1a;
+  border-color: #1f5c35;
+}
+[data-theme="dark"] #form-success p {
+  color: #4ade80;
+}
+
+/* ─── Dark Mode: Text Visibility Fixes ─────────────────────────────────────
+   var(--white) becomes #1e1e20 (dark) in dark mode.
+   All elements that use var(--white) as TEXT COLOR on dark/red backgrounds
+   need to be explicitly set back to white.
+   ─────────────────────────────────────────────────────────────────────── */
+
+/* Catch ALL inline style="color: var(--white)" anywhere on the page */
+[data-theme="dark"] [style*="color: var(--white)"] { color: #ffffff !important; }
+
+/* Primary button always white text (on red bg) */
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .btn-primary:hover { color: #ffffff !important; }
+
+/* Step number circles (red bg) */
+[data-theme="dark"] .step-number { color: #ffffff !important; }
+
+/* Page header heading */
+[data-theme="dark"] .page-header h1 { color: #ffffff !important; }
+
+/* Hero heading */
+[data-theme="dark"] .hero h1 { color: #ffffff !important; }
+
+/* Dark-bg section headings */
+[data-theme="dark"] .section.dark-bg h1,
+[data-theme="dark"] .section.dark-bg h2,
+[data-theme="dark"] .section.dark-bg h3 { color: #ffffff !important; }
+
+/* Red-bg sections: headings and paragraphs */
+[data-theme="dark"] .section.red-bg h1,
+[data-theme="dark"] .section.red-bg h2,
+[data-theme="dark"] .section.red-bg h3,
+[data-theme="dark"] .section.red-bg p { color: #ffffff !important; }
+
+/* Riverside banner headings */
+[data-theme="dark"] .riverside-banner h2,
+[data-theme="dark"] .riverside-banner h3,
+[data-theme="dark"] .riverside-info h2 { color: #ffffff !important; }
+
+/* Benefit item headings (services page, dark riverside section) */
+[data-theme="dark"] .benefit-item h4 { color: #ffffff !important; }
+
+/* Team pills */
+[data-theme="dark"] .team-pill { color: rgba(255,255,255,0.9) !important; }
+
+/* Footer column headings */
+[data-theme="dark"] .footer-col h4 { color: #ffffff !important; }
+[data-theme="dark"] .footer-bottom span { color: rgba(255,255,255,0.4) !important; }
+
+/* Nav toggle hamburger bars stay visible */
+[data-theme="dark"] .nav-toggle span { background: var(--black); }
+
+/* ─── Logos: ensure no stray filter in dark mode ─── */
+/* Nav uses logo-red, footer uses logo-dark – both static, no JS swap needed. */
+[data-theme="dark"] .footer-brand img,
+[data-theme="dark"] .nav-logo img {
+  filter: none !important;
 }
