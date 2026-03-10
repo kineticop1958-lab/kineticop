@@ -238,31 +238,31 @@
           <h3>Send Us a Message</h3>
           <p>Fill out the form below and we'll get back to you as soon as possible.</p>
 
-          <form class="contact-form" style="max-width: 100%;">
+          <form class="contact-form" action="https://formspree.io/f/xqeypaoo" method="POST" style="max-width: 100%;">
             <div class="form-row">
               <div class="form-group">
                 <label for="firstName">First Name *</label>
-                <input type="text" id="firstName" placeholder="Your first name" required>
+                <input type="text" id="firstName" name="firstName" placeholder="Your first name" required>
               </div>
               <div class="form-group">
                 <label for="lastName">Last Name *</label>
-                <input type="text" id="lastName" placeholder="Your last name" required>
+                <input type="text" id="lastName" name="lastName" placeholder="Your last name" required>
               </div>
             </div>
 
             <div class="form-group">
               <label for="email">Email Address *</label>
-              <input type="email" id="email" placeholder="your@email.com" required>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
             </div>
 
             <div class="form-group">
               <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" placeholder="(___) ___-____">
+              <input type="tel" id="phone" name="phone" placeholder="(___) ___-____">
             </div>
 
             <div class="form-group">
               <label for="subject">Subject</label>
-              <select id="subject">
+              <select id="subject" name="subject">
                 <option value="">Select a topic...</option>
                 <option value="new-patient">New Patient Inquiry</option>
                 <option value="existing-patient">Existing Patient</option>
@@ -277,8 +277,11 @@
 
             <div class="form-group">
               <label for="message">Message *</label>
-              <textarea id="message" placeholder="How can we help you?" required></textarea>
+              <textarea id="message" name="message" placeholder="How can we help you?" required></textarea>
             </div>
+
+            <input type="hidden" name="_subject" value="New message from Kinetic O&amp;P website">
+            <input type="hidden" name="_next" value="https://kineticop1958-lab.github.io/kineticop/contact.html?sent=true">
 
             <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
               Send Message
@@ -287,6 +290,10 @@
               We typically respond within 1 business day.
             </p>
           </form>
+
+          <div id="form-success" style="display:none; background:#f0fdf4; border:1px solid #86efac; border-radius:12px; padding:24px; text-align:center; margin-top:16px;">
+            <p style="color:#166534; font-weight:600; font-size:16px; margin:0;">&#10003; Message sent! We'll be in touch within 1 business day.</p>
+          </div>
         </div>
 
       </div>
@@ -390,6 +397,13 @@
       link.addEventListener('click', () => {
         document.querySelector('.nav-links').classList.remove('show');
       });
+    // Show success message if redirected back after form submit
+    if (window.location.search.includes('sent=true')) {
+      var s = document.getElementById('form-success');
+      if (s) { s.style.display = 'block'; }
+      var f = document.querySelector('.contact-form');
+      if (f) { f.style.display = 'none'; }
+    }
     });
   </script>
 </body>
