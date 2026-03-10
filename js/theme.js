@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   var LOGO_LIGHT = 'img/_kineticop_Logo-red.fw.webp';
-  var LOGO_DARK  = 'img/logo-dark';
+  var LOGO_DARK  = 'img/logo-dark-header.jpg';
 
   /** Swap only the nav logo to match the current theme */
   function applyNavLogo(isDark) {
