@@ -383,10 +383,12 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
 .card-img {
   background: var(--light-gray);
   overflow: hidden;
+  height: 220px;
 }
 .card-img img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
