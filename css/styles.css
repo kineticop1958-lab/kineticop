@@ -1056,9 +1056,15 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
 /* Nav toggle hamburger bars stay visible */
 [data-theme="dark"] .nav-toggle span { background: var(--black); }
 
-/* ─── Logos: ensure no stray filter in dark mode ─── */
-/* Nav uses logo-red, footer uses logo-dark – both static, no JS swap needed. */
+/* ─── Logos: dark mode adjustments ─── */
 [data-theme="dark"] .footer-brand img,
 [data-theme="dark"] .nav-logo img {
   filter: none !important;
+}
+/* Blend logo-dark-header.jpg background into the nav (#1e1e20).
+   mix-blend-mode: lighten keeps anything darker than the nav colour
+   (the JPEG background ~#050507) transparent-looking, while the
+   logo art (which is lighter) renders normally. */
+[data-theme="dark"] .nav-logo img {
+  mix-blend-mode: lighten;
 }
