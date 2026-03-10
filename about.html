@@ -384,6 +384,11 @@
     window.addEventListener('scroll', () => {
       document.getElementById('siteNav').classList.toggle('scrolled', window.scrollY > 10);
     });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('show');
+      });
+    });
   </script>
 </body>
 </html>
