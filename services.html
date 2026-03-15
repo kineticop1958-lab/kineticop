@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services — Kinetic O&P</title>
   <link rel="stylesheet" href="css/styles.css?v=3">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     .service-detail {
       display: grid;
@@ -116,8 +117,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
       flex-shrink: 0;
+    }
+    .benefit-icon i {
+      width: 20px;
+      height: 20px;
+      color: rgba(255,255,255,0.9);
     }
     .benefit-item h4 {
       font-family: var(--font-main);
@@ -275,28 +280,28 @@
 
       <div class="benefits-grid">
         <div class="benefit-item">
-          <div class="benefit-icon">&#128101;</div>
+          <div class="benefit-icon"><i data-lucide="users"></i></div>
           <div>
             <h4>Multi-Disciplinary Team</h4>
             <p>Physicians, therapists, and O&P specialists collaborate in one location for comprehensive care.</p>
           </div>
         </div>
         <div class="benefit-item">
-          <div class="benefit-icon">&#9201;</div>
+          <div class="benefit-icon"><i data-lucide="calendar-check"></i></div>
           <div>
             <h4>Fewer Office Visits</h4>
             <p>See your entire care team in one appointment instead of scheduling multiple separate visits.</p>
           </div>
         </div>
         <div class="benefit-item">
-          <div class="benefit-icon">&#127919;</div>
+          <div class="benefit-icon"><i data-lucide="target"></i></div>
           <div>
             <h4>Focused on Independence</h4>
             <p>Every team member works together toward one goal — getting you ambulatory and independent.</p>
           </div>
         </div>
         <div class="benefit-item">
-          <div class="benefit-icon">&#128197;</div>
+          <div class="benefit-icon"><i data-lucide="phone-call"></i></div>
           <div>
             <h4>Easy to Schedule</h4>
             <p>Schedule through Dr. Hung, Dr. Gilbert, or call Kinetic O&P directly at (815) 401-7260.</p>
@@ -380,6 +385,7 @@
         document.querySelector('.nav-links').classList.remove('show');
       });
     });
+    lucide.createIcons();
   </script>
   <script>document.querySelectorAll('img').forEach(function(i){if(i.src.includes('/img/'))i.src=i.src.split('?')[0]+'?v='+document.lastModified;});</script>
   <script src="js/theme.js"></script>
