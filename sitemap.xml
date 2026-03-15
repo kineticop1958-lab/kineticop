@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://kineticop1958-lab.github.io/kineticop/index.html</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://kineticop1958-lab.github.io/kineticop/services.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kineticop1958-lab.github.io/kineticop/about.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kineticop1958-lab.github.io/kineticop/contact.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kineticop1958-lab.github.io/kineticop/faq.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kineticop1958-lab.github.io/kineticop/resources.html</loc>
+    <priority>0.7</priority>
+  </url>
+</urlset>

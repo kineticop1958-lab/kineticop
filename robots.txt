@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kineticop1958-lab.github.io/kineticop/sitemap.xml
