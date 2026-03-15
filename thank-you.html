@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>if(localStorage.getItem("kop-theme")==="dark")document.documentElement.setAttribute("data-theme","dark");</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You — Kinetic O&P</title>
+  <link rel="stylesheet" href="css/styles.css?v=3">
+  <style>
+    .thank-you-wrapper {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .thank-you-card {
+      max-width: 560px;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 56px 48px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+      border: 1px solid var(--border-gray);
+    }
+    .thank-you-icon {
+      width: 72px;
+      height: 72px;
+      background: #f0fdf4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .thank-you-icon svg {
+      width: 36px;
+      height: 36px;
+      color: #16a34a;
+    }
+    .thank-you-card h1 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 12px;
+    }
+    .thank-you-card p {
+      color: var(--medium-gray);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+    .thank-you-actions {
+      margin-top: 32px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="img/_kineticop_Logo-red.fw.webp" alt="Kinetic O&P">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="resources.html">Patient Resources</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="tel:8154017260" class="nav-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          (815) 401-7260
+        </a>
+        <a href="contact.html" class="btn btn-primary">Schedule Visit</a>
+      </div>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- THANK YOU CONTENT -->
+  <div class="thank-you-wrapper">
+    <div class="thank-you-card">
+      <div class="thank-you-icon">
+        <i data-lucide="circle-check"></i>
+      </div>
+      <h1>Thank You!</h1>
+      <p>Your message has been sent successfully. We typically respond within <strong>1 business day</strong>.</p>
+      <p>If your matter is urgent, please call us directly.</p>
+      <div class="thank-you-actions">
+        <a href="index.html" class="btn btn-primary">Back to Home</a>
+        <a href="tel:8154017260" class="btn btn-outline">Call (815) 401-7260</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html"><img src="img/logo-dark.jpg" alt="Kinetic O&P" class="footer-logo"></a>
+          <p>Dedicated to improving lives through expert orthotic and prosthetic care. New Mobility; New Possibility.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="resources.html">Patient Resources</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Prosthetics</a></li>
+            <li><a href="services.html">Orthotics</a></li>
+            <li><a href="services.html">Diabetic Footwear</a></li>
+            <li><a href="services.html">Spinal &amp; Cervical</a></li>
+            <li><a href="services.html#riverside">Riverside Clinic</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>765 Plum Creek Drive<br>Bourbonnais, IL 60914</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span><a href="tel:8154017260">(815) 401-7260</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@kineticop.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Kinetic O&P LTD. All rights reserved.</span>
+        <span>Bourbonnais, Illinois</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('siteNav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('show');
+      });
+    });
+    lucide.createIcons();
+  </script>
+  <script src="js/theme.js"></script>
+</body>
+</html>
