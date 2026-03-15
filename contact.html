@@ -123,6 +123,7 @@
     }
   </style>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -244,7 +245,7 @@
           <h3>Send Us a Message</h3>
           <p>Fill out the form below and we'll get back to you as soon as possible.</p>
 
-          <form class="contact-form" action="https://formspree.io/f/xqeypaoo" method="POST" style="max-width: 100%;">
+          <form class="contact-form" id="contactForm" style="max-width: 100%;">
             <div class="form-row">
               <div class="form-group">
                 <label for="firstName">First Name *</label>
@@ -270,14 +271,14 @@
               <label for="subject">Subject</label>
               <select id="subject" name="subject">
                 <option value="">Select a topic...</option>
-                <option value="new-patient">New Patient Inquiry</option>
-                <option value="existing-patient">Existing Patient</option>
-                <option value="prosthetics">Prosthetics</option>
-                <option value="orthotics">Orthotics</option>
-                <option value="diabetic-footwear">Diabetic Footwear</option>
-                <option value="riverside-clinic">Riverside P&O Clinic</option>
-                <option value="insurance">Insurance Question</option>
-                <option value="other">Other</option>
+                <option value="New Patient Inquiry">New Patient Inquiry</option>
+                <option value="Existing Patient">Existing Patient</option>
+                <option value="Prosthetics">Prosthetics</option>
+                <option value="Orthotics">Orthotics</option>
+                <option value="Diabetic Footwear">Diabetic Footwear</option>
+                <option value="Riverside P&O Clinic">Riverside P&amp;O Clinic</option>
+                <option value="Insurance Question">Insurance Question</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
@@ -286,10 +287,7 @@
               <textarea id="message" name="message" placeholder="How can we help you?" required></textarea>
             </div>
 
-            <input type="hidden" name="_subject" value="New message from Kinetic O&amp;P website">
-            <input type="hidden" name="_next" value="https://kineticop1958-lab.github.io/kineticop/thank-you.html">
-
-            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%; justify-content: center;">
               Send Message
             </button>
             <p style="font-size: 13px; color: var(--medium-gray); margin-top: 12px; text-align: center;">
@@ -297,8 +295,8 @@
             </p>
           </form>
 
-          <div id="form-success" style="display:none; background:#f0fdf4; border:1px solid #86efac; border-radius:12px; padding:24px; text-align:center; margin-top:16px;">
-            <p style="color:#166534; font-weight:600; font-size:16px; margin:0;">&#10003; Message sent! We'll be in touch within 1 business day.</p>
+          <div id="form-error" style="display:none; background:#fef2f2; border:1px solid #fca5a5; border-radius:12px; padding:24px; text-align:center; margin-top:16px;">
+            <p style="color:#991b1b; font-weight:600; font-size:16px; margin:0;">Something went wrong. Please call us at (815) 401-7260 or email info@kineticop.com.</p>
           </div>
         </div>
 
@@ -403,15 +401,26 @@
       link.addEventListener('click', () => {
         document.querySelector('.nav-links').classList.remove('show');
       });
-    // Show success message if redirected back after form submit
-    if (window.location.search.includes('sent=true')) {
-      var s = document.getElementById('form-success');
-      if (s) { s.style.display = 'block'; }
-      var f = document.querySelector('.contact-form');
-      if (f) { f.style.display = 'none'; }
-    }
     });
     lucide.createIcons();
+
+    // EmailJS contact form
+    emailjs.init('OBfBVzkhf_nNLRGrD');
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      emailjs.sendForm('service_bchhprl', 'template_w3f4jfv', this)
+        .then(function() {
+          window.location.href = 'thank-you.html';
+        }, function() {
+          btn.disabled = false;
+          btn.textContent = 'Send Message';
+          document.getElementById('form-error').style.display = 'block';
+        });
+    });
   </script>
   <script src="js/theme.js"></script>
 </body>
