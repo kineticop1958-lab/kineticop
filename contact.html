@@ -373,6 +373,17 @@
     });
     lucide.createIcons();
 
+    // Phone number formatting
+    document.getElementById('phone').addEventListener('input', function(e) {
+      var x = e.target.value.replace(/\D/g, '').substring(0, 10);
+      var a = x.substring(0, 3);
+      var b = x.substring(3, 6);
+      var c = x.substring(6, 10);
+      if (x.length > 6) e.target.value = '(' + a + ') ' + b + '-' + c;
+      else if (x.length > 3) e.target.value = '(' + a + ') ' + b;
+      else if (x.length > 0) e.target.value = '(' + a;
+    });
+
     // Cloudflare Worker contact form
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
