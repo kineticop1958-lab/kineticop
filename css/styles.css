@@ -1043,8 +1043,10 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
 [data-theme="dark"] .riverside-banner h3,
 [data-theme="dark"] .riverside-info h2 { color: #ffffff !important; }
 
-/* Benefit item headings (services page, dark riverside section) */
+/* Benefit item headings and icons (services page, dark riverside section) */
 [data-theme="dark"] .benefit-item h4 { color: #ffffff !important; }
+[data-theme="dark"] .benefit-icon i,
+[data-theme="dark"] .benefit-icon svg { color: #ffffff !important; }
 
 /* Team pills */
 [data-theme="dark"] .team-pill { color: rgba(255,255,255,0.9) !important; }
