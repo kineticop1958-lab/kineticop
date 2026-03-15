@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>if(localStorage.getItem("kop-theme")==="dark")document.documentElement.setAttribute("data-theme","dark");</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Kinetic O&P</title>
+  <meta name="description" content="Contact Kinetic O&P in Bourbonnais, IL. Call (815) 401-7260, email info@kineticop.com, or send us a message. Open Monday–Friday 8:00 AM–4:30 PM.">
+  <link rel="canonical" href="https://kineticop1958-lab.github.io/kineticop/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact — Kinetic O&P">
+  <meta property="og:description" content="Contact Kinetic O&P in Bourbonnais, IL. Call (815) 401-7260 or send us a message.">
+  <meta property="og:url" content="https://kineticop1958-lab.github.io/kineticop/contact.html">
+  <meta property="og:image" content="https://kineticop1958-lab.github.io/kineticop/img/_kineticop_Logo-red.fw.webp">
+  <meta property="og:site_name" content="Kinetic O&P">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact — Kinetic O&P">
+  <meta name="twitter:description" content="Contact Kinetic O&P in Bourbonnais, IL. Call (815) 401-7260 or send us a message.">
+  <meta name="twitter:image" content="https://kineticop1958-lab.github.io/kineticop/img/_kineticop_Logo-red.fw.webp">
+  <link rel="stylesheet" href="css/styles.css?v=3">
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-info-cards {
+      display: grid;
+      gap: 20px;
+    }
+
+    .contact-card {
+      display: flex;
+      gap: 20px;
+      padding: 28px;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border-gray);
+      transition: var(--transition);
+    }
+    .contact-card:hover {
+      border-color: var(--red);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+
+    .contact-card-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--red-tint);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-card-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--red);
+    }
+
+    .contact-card h4 {
+      font-family: var(--font-main);
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .contact-card p {
+      color: var(--medium-gray);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .contact-card a {
+      color: var(--red);
+      font-weight: 500;
+    }
+
+    .map-embed {
+      width: 100%;
+      height: 300px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border-gray);
+      margin-top: 20px;
+      background: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 14px;
+    }
+
+    .form-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+      border: 1px solid var(--border-gray);
+    }
+    .form-card h3 {
+      margin-bottom: 8px;
+    }
+    .form-card > p {
+      color: var(--medium-gray);
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    .hours-table td {
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 15px;
+    }
+    .hours-table td:first-child {
+      font-weight: 600;
+      color: var(--black);
+    }
+    .hours-table td:last-child {
+      text-align: right;
+      color: var(--medium-gray);
+    }
+    .hours-table tr:last-child td { border-bottom: none; }
+
+    @media (max-width: 968px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .riverside-bottom-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    }
+  </style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="img/_kineticop_Logo-red.fw.webp" alt="Kinetic O&P">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="resources.html">Patient Resources</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="tel:8154017260" class="nav-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          (815) 401-7260
+        </a>
+        <a href="contact.html" class="btn btn-primary">Schedule Visit</a>
+      </div>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══ PAGE HEADER ═══ -->
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Contact</p>
+      <h1>Contact Us</h1>
+      <div class="red-line"></div>
+    </div>
+  </div>
+
+  <!-- ═══ CONTACT CONTENT ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- Left: Contact Info -->
+        <div>
+          <p class="section-label">Get in Touch</p>
+          <h2 class="section-heading">How Can We Help You?</h2>
+          <p class="section-desc" style="margin-bottom: 32px;">Whether you're a new patient or have been with us for years, we'd love to hear from you. Reach out using any of the methods below.</p>
+
+          <div class="contact-info-cards">
+            <a class="contact-card" href="tel:8154017260">
+              <div class="contact-card-icon">
+                <i data-lucide="phone"></i>
+              </div>
+              <div>
+                <h4>Phone</h4>
+                <p>(815) 401-7260</p>
+              </div>
+            </a>
+
+            <div class="contact-card">
+              <div class="contact-card-icon">
+                <i data-lucide="mail"></i>
+              </div>
+              <div>
+                <h4>Email</h4>
+                <p><a href="mailto:info@kineticop.com">info@kineticop.com</a></p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-card-icon">
+                <i data-lucide="printer"></i>
+              </div>
+              <div>
+                <h4>Fax</h4>
+                <p>(815) 401-7267</p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-card-icon">
+                <i data-lucide="map-pin"></i>
+              </div>
+              <div>
+                <h4>Address</h4>
+                <p>765 Plum Creek Drive<br>Bourbonnais, IL 60914</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hours -->
+          <div style="margin-top: 32px;">
+            <h3 style="font-size: 1.3rem; margin-bottom: 4px;">Office Hours</h3>
+            <table class="hours-table">
+              <tr><td>Monday - Friday</td><td>8:00 AM - 4:30 PM</td></tr>
+              <tr><td></td><td style="font-size: 13px; color: var(--red);">Closed 12:00 - 1:00 PM (Lunch)</td></tr>
+              <tr><td>Saturday</td><td>Closed</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </table>
+          </div>
+
+          <!-- Map -->
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=765+Plum+Creek+Drive,Bourbonnais,IL+60914"
+              width="100%" height="300" style="border:0; border-radius: 14px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="form-card">
+          <h3>Send Us a Message</h3>
+          <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+
+          <form class="contact-form" id="contactForm" style="max-width: 100%;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Your first name" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Your last name" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(___) ___-____">
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject">
+                <option value="">Select a topic...</option>
+                <option value="New Patient Inquiry">New Patient Inquiry</option>
+                <option value="Existing Patient">Existing Patient</option>
+                <option value="Prosthetics">Prosthetics</option>
+                <option value="Orthotics">Orthotics</option>
+                <option value="Diabetic Footwear">Diabetic Footwear</option>
+                <option value="Riverside P&O Clinic">Riverside P&amp;O Clinic</option>
+                <option value="Insurance Question">Insurance Question</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" placeholder="How can we help you?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%; justify-content: center;">
+              Send Message
+            </button>
+            <p style="font-size: 13px; color: var(--medium-gray); margin-top: 12px; text-align: center;">
+              We typically respond within 1 business day.
+            </p>
+          </form>
+
+          <div id="form-error" style="display:none; background:#fef2f2; border:1px solid #fca5a5; border-radius:12px; padding:24px; text-align:center; margin-top:16px;">
+            <p style="color:#991b1b; font-weight:600; font-size:16px; margin:0;">Something went wrong. Please call us at (815) 401-7260 or email info@kineticop.com.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RIVERSIDE QUICK INFO ═══ -->
+  <section class="section dark-bg">
+    <div class="container">
+      <div class="riverside-bottom-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+        <div>
+          <p class="section-label" style="color: var(--red-light);">Monthly Clinic</p>
+          <h2 style="color: var(--white); margin-bottom: 16px;">Riverside P&amp;O Clinic</h2>
+          <p style="color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.8;">
+            Our multi-disciplinary clinic is held the second Wednesday of every month at Riverside Medical Center in Kankakee. Schedule through Dr. Hung, Dr. Gilbert, or call us directly.
+          </p>
+          <a href="services.html#riverside" class="btn btn-outline-white" style="margin-top: 24px;">Learn More &rarr;</a>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; text-align: center;">
+            <div style="margin-bottom: 8px; display:flex; justify-content:center;"><i data-lucide="calendar" style="width:28px;height:28px;stroke:rgba(255,255,255,0.85);stroke-width:1.75;"></i></div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px;">When</div>
+            <div style="font-weight: 600; margin-top: 4px; color: var(--white);">2nd Wednesday</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; text-align: center;">
+            <div style="margin-bottom: 8px; display:flex; justify-content:center;"><i data-lucide="map-pin" style="width:28px;height:28px;stroke:rgba(255,255,255,0.85);stroke-width:1.75;"></i></div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px;">Where</div>
+            <div style="font-weight: 600; margin-top: 4px; color: var(--white);">Riverside Medical</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; text-align: center;">
+            <div style="margin-bottom: 8px; display:flex; justify-content:center;"><i data-lucide="stethoscope" style="width:28px;height:28px;stroke:rgba(255,255,255,0.85);stroke-width:1.75;"></i></div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px;">Physicians</div>
+            <div style="font-weight: 600; margin-top: 4px; color: var(--white);">Dr. Hung & Gilbert</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; text-align: center;">
+            <div style="margin-bottom: 8px; display:flex; justify-content:center;"><i data-lucide="phone" style="width:28px;height:28px;stroke:rgba(255,255,255,0.85);stroke-width:1.75;"></i></div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px;">Schedule</div>
+            <div style="font-weight: 600; margin-top: 4px; color: var(--white);"><a href="tel:8154017260" style="color: inherit;">(815) 401-7260</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <div id="site-footer"></div>
+  <script>fetch('footer.html').then(r=>r.text()).then(h=>document.getElementById('site-footer').innerHTML=h);</script>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('siteNav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('show');
+      });
+    });
+    lucide.createIcons();
+
+    // EmailJS contact form
+    emailjs.init('OBfBVzkhf_nNLRGrD');
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      emailjs.sendForm('service_bchhprl', 'template_w3f4jfv', this)
+        .then(function() {
+          window.location.href = 'thank-you.html';
+        }, function() {
+          btn.disabled = false;
+          btn.textContent = 'Send Message';
+          document.getElementById('form-error').style.display = 'block';
+        });
+    });
+  </script>
+  <script>document.querySelectorAll('img').forEach(function(i){if(i.src.includes('/img/'))i.src=i.src.split('?')[0]+'?v='+document.lastModified;});</script>
+  <script src="js/theme.js"></script>
+</body>
+</html>
