@@ -731,7 +731,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
 }
 .footer-logo-dark { display: none; }
 .footer-logo-light { display: block; mix-blend-mode: multiply; }
-[data-theme="dark"] .footer-logo-dark { display: block; }
+[data-theme="dark"] .footer-logo-dark { display: block; mix-blend-mode: lighten; }
 [data-theme="dark"] .footer-logo-light { display: none; }
 .footer-col h4 {
   font-family: var(--font-main);
