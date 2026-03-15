@@ -381,6 +381,7 @@
       });
     });
   </script>
+  <script>document.querySelectorAll('img').forEach(function(i){if(i.src.includes('/img/'))i.src=i.src.split('?')[0]+'?v='+document.lastModified;});</script>
   <script src="js/theme.js"></script>
 </body>
 </html>
