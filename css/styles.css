@@ -442,6 +442,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   margin-bottom: 8px;
 }
 .dark-bg .stat-number { color: var(--red-light); }
+.dark-bg .stat-label { color: #ffffff; }
 
 .stat-label {
   font-size: 14px;
