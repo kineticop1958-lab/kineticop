@@ -1039,10 +1039,14 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
 [data-theme="dark"] .section.red-bg h3,
 [data-theme="dark"] .section.red-bg p { color: #ffffff !important; }
 
-/* Riverside banner headings */
+/* Riverside banner headings and details */
 [data-theme="dark"] .riverside-banner h2,
 [data-theme="dark"] .riverside-banner h3,
 [data-theme="dark"] .riverside-info h2 { color: #ffffff !important; }
+[data-theme="dark"] .riverside-detail .value,
+[data-theme="dark"] .riverside-detail .value a { color: #ffffff !important; }
+[data-theme="dark"] .riverside-detail .icon i,
+[data-theme="dark"] .riverside-detail .icon svg { color: #ffffff !important; }
 
 /* Benefit item headings and icons (services page, dark riverside section) */
 [data-theme="dark"] .benefit-item h4 { color: #ffffff !important; }
