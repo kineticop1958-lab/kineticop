@@ -43,7 +43,7 @@ export default {
       const payload = {
         from: env.FROM_EMAIL,
         to: env.TO_EMAIL,
-        bcc: ['REDACTED_EMAIL', 'REDACTED_EMAIL'],
+        // bcc: ['REDACTED_EMAIL', 'REDACTED_EMAIL'], // enable after domain verification
         subject: `Kinetic O&P Contact: ${subject || 'New Message'} — ${firstName} ${lastName}`,
         html: html,
         reply_to: email,
