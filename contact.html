@@ -135,7 +135,6 @@
     }
   </style>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -299,6 +298,11 @@
               <textarea id="message" name="message" placeholder="How can we help you?" required></textarea>
             </div>
 
+            <div class="form-group">
+              <label for="file">Attach File <span style="font-weight:400; color: var(--medium-gray);">(optional — intake forms, documents, etc.)</span></label>
+              <input type="file" id="file" name="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="padding: 12px;">
+            </div>
+
             <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%; justify-content: center;">
               Send Message
             </button>
@@ -369,18 +373,27 @@
     });
     lucide.createIcons();
 
-    // EmailJS contact form
-    emailjs.init('OBfBVzkhf_nNLRGrD');
+    // Cloudflare Worker contact form
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       var btn = document.getElementById('submitBtn');
       btn.disabled = true;
       btn.textContent = 'Sending...';
 
-      emailjs.sendForm('service_bchhprl', 'template_w3f4jfv', this)
-        .then(function() {
-          window.location.href = 'thank-you.html';
-        }, function() {
+      var formData = new FormData(this);
+      fetch('https://kineticop-contact.kineticop1958.workers.dev', {
+        method: 'POST',
+        body: formData,
+      })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data.success) {
+            window.location.href = 'thank-you.html';
+          } else {
+            throw new Error('Send failed');
+          }
+        })
+        .catch(function() {
           btn.disabled = false;
           btn.textContent = 'Send Message';
           document.getElementById('form-error').style.display = 'block';
