@@ -18,6 +18,7 @@
   <meta name="twitter:description" content="Expert prosthetic, orthotic, and diabetic footwear services in Bourbonnais, IL.">
   <meta name="twitter:image" content="https://kineticop1958-lab.github.io/kineticop/img/_kineticop_Logo-red.fw.webp">
   <link rel="stylesheet" href="css/styles.css?v=3">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     /* Home-specific styles */
     .hero-home {
@@ -237,28 +238,28 @@
         <div>
           <div class="riverside-details">
             <div class="riverside-detail">
-              <div class="icon">&#128197;</div>
+              <div class="icon"><i data-lucide="calendar" style="width:20px;height:20px;color:rgba(255,255,255,0.9);"></i></div>
               <div>
                 <div class="label">Schedule</div>
                 <div class="value">2nd Wednesday Monthly</div>
               </div>
             </div>
             <div class="riverside-detail">
-              <div class="icon">&#128205;</div>
+              <div class="icon"><i data-lucide="map-pin" style="width:20px;height:20px;color:rgba(255,255,255,0.9);"></i></div>
               <div>
                 <div class="label">Location</div>
                 <div class="value">Riverside Medical Center, Kankakee</div>
               </div>
             </div>
             <div class="riverside-detail">
-              <div class="icon">&#129658;</div>
+              <div class="icon"><i data-lucide="stethoscope" style="width:20px;height:20px;color:rgba(255,255,255,0.9);"></i></div>
               <div>
                 <div class="label">Physicians</div>
                 <div class="value">Dr. Hung &amp; Dr. Gilbert</div>
               </div>
             </div>
             <div class="riverside-detail">
-              <div class="icon">&#128222;</div>
+              <div class="icon"><i data-lucide="phone" style="width:20px;height:20px;color:rgba(255,255,255,0.9);"></i></div>
               <div>
                 <div class="label">Book Now</div>
                 <div class="value"><a href="tel:8154017260">(815) 401-7260</a></div>
@@ -389,6 +390,7 @@
         document.querySelector('.nav-links').classList.remove('show');
       });
     });
+    lucide.createIcons();
   </script>
 
   <script>document.querySelectorAll('img').forEach(function(i){if(i.src.includes('/img/'))i.src=i.src.split('?')[0]+'?v='+document.lastModified;});</script>
