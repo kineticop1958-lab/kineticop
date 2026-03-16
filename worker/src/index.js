@@ -85,7 +85,8 @@ async function fillOriginalPdf(fields) {
   draw(p1, fields.homePhone, 420, aboveLine(193));
 
   // EMERGENCY CONTACT line: x0=317 y=209 to x1=568
-  draw(p1, fields.emergencyContact, 318, aboveLine(209));
+  const emergencyContact = [fields.emergencyName, fields.emergencyPhone].filter(Boolean).join(' ');
+  draw(p1, emergencyContact, 318, aboveLine(209));
 
   // EMAIL line: x0=177 y=225 to x1=568
   draw(p1, fields.email, 178, aboveLine(225));
