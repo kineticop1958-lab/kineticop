@@ -1,1 +1,13 @@
 worker/.wrangler/
+worker/node_modules/
+worker/extract.py
+worker/test.json
+worker/src/DancingScript.ttf
+test-submit.html
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example

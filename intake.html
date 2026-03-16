@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>if(localStorage.getItem("kop-theme")==="dark")document.documentElement.setAttribute("data-theme","dark");</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Intake Form — Kinetic O&P</title>
+  <meta name="description" content="Complete your patient intake form online for Kinetic O&P. Submit patient information, medical history, and insurance details before your visit.">
+  <link rel="canonical" href="https://kineticop1958-lab.github.io/kineticop/intake.html">
+  <link rel="stylesheet" href="css/styles.css?v=3">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    .intake-form {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .form-section {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border-gray);
+    }
+    .form-section-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--red);
+      color: var(--black);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-row-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .form-row-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--dark-gray);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border-gray);
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: var(--font-main);
+      background: var(--white);
+      color: var(--black);
+      transition: var(--transition);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px var(--red-tint);
+    }
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-top: 6px;
+    }
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 400;
+      margin-bottom: 0;
+      cursor: pointer;
+    }
+    .radio-group input[type="radio"] {
+      width: auto;
+      accent-color: var(--red);
+    }
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .checkbox-grid label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 400;
+      font-size: 14px;
+      margin-bottom: 0;
+      cursor: pointer;
+    }
+    .checkbox-grid input[type="checkbox"] {
+      width: auto;
+      accent-color: var(--red);
+    }
+    .legal-text {
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--medium-gray);
+      max-height: 200px;
+      overflow-y: auto;
+      padding: 16px;
+      background: var(--light-gray);
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+    .signature-group {
+      margin-top: 16px;
+    }
+    .signature-group label {
+      font-weight: 600;
+    }
+    .consent-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .consent-check input {
+      margin-top: 3px;
+      width: auto;
+      accent-color: var(--red);
+    }
+    .consent-check span {
+      font-size: 14px;
+      color: var(--dark-gray);
+    }
+    @media (max-width: 768px) {
+      .form-row, .form-row-3, .form-row-4 { grid-template-columns: 1fr; }
+      .checkbox-grid { grid-template-columns: 1fr; }
+      .form-section { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="img/_kineticop_Logo-red.fw.webp" alt="Kinetic O&P">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="resources.html">Patient Resources</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="tel:8154017260" class="nav-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          (815) 401-7260
+        </a>
+        <a href="contact.html" class="btn btn-primary">Schedule Visit</a>
+      </div>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="resources.html">Patient Resources</a> &nbsp;/&nbsp; Intake Form</p>
+      <h1>Patient Intake Form</h1>
+      <div class="red-line"></div>
+    </div>
+  </div>
+
+  <!-- INTAKE FORM -->
+  <section class="section">
+    <div class="container">
+      <div class="intake-form">
+        <p style="color: var(--medium-gray); margin-bottom: 32px; font-size: 16px;">Complete this form online and it will be sent directly to our office. Fields marked with * are required.</p>
+
+        <form id="intakeForm">
+
+          <!-- PATIENT INFORMATION -->
+          <div class="form-section">
+            <div class="form-section-title">Patient Information</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="patientName">Patient Name *</label>
+                <input type="text" id="patientName" name="patientName" maxlength="51" required>
+              </div>
+              <div class="form-group">
+                <label for="dob">Date of Birth *</label>
+                <input type="date" id="dob" name="dob" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="address">Address *</label>
+              <input type="text" id="address" name="address" maxlength="74" required>
+            </div>
+            <div class="form-row-3">
+              <div class="form-group">
+                <label for="city">City *</label>
+                <input type="text" id="city" name="city" maxlength="44" required>
+              </div>
+              <div class="form-group">
+                <label for="state">State *</label>
+                <input type="text" id="state" name="state" maxlength="2" placeholder="IL" required>
+              </div>
+              <div class="form-group">
+                <label for="zip">ZIP *</label>
+                <input type="text" id="zip" name="zip" maxlength="15" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cellPhone">Cell Phone *</label>
+                <input type="tel" id="cellPhone" name="cellPhone" required>
+              </div>
+              <div class="form-group">
+                <label for="homePhone">Home Phone</label>
+                <input type="tel" id="homePhone" name="homePhone">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="emergencyContact">Emergency Contact Name/Phone *</label>
+                <input type="text" id="emergencyContact" name="emergencyContact" maxlength="50" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" maxlength="78" required>
+              </div>
+            </div>
+            <div class="form-row-4">
+              <div class="form-group">
+                <label for="height">Height *</label>
+                <input type="text" id="height" name="height" placeholder='5\'10"' maxlength="16" required>
+              </div>
+              <div class="form-group">
+                <label for="weight">Weight *</label>
+                <input type="text" id="weight" name="weight" placeholder="lbs" maxlength="11" required>
+              </div>
+              <div class="form-group" style="grid-column: span 2;">
+                <label>Diabetic *</label>
+                <div class="radio-group">
+                  <label><input type="radio" name="diabetic" value="Yes" required> Yes</label>
+                  <label><input type="radio" name="diabetic" value="No"> No</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRIMARY INSURANCE -->
+          <div class="form-section">
+            <div class="form-section-title">Primary Insurance</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="primaryInsurance">Primary Insurance *</label>
+                <input type="text" id="primaryInsurance" name="primaryInsurance" maxlength="64" required>
+              </div>
+              <div class="form-group">
+                <label for="primaryPhone">Insurance Phone</label>
+                <input type="tel" id="primaryPhone" name="primaryPhone">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="primaryPolicy">Policy # *</label>
+                <input type="text" id="primaryPolicy" name="primaryPolicy" maxlength="34" required>
+              </div>
+              <div class="form-group">
+                <label for="primaryGroup">Group #</label>
+                <input type="text" id="primaryGroup" name="primaryGroup" maxlength="29">
+              </div>
+            </div>
+          </div>
+
+          <!-- SECONDARY INSURANCE -->
+          <div class="form-section">
+            <div class="form-section-title">Secondary Insurance</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="secondaryInsurance">Secondary Insurance</label>
+                <input type="text" id="secondaryInsurance" name="secondaryInsurance" maxlength="60">
+              </div>
+              <div class="form-group">
+                <label for="secondaryPhone">Insurance Phone</label>
+                <input type="tel" id="secondaryPhone" name="secondaryPhone">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="secondaryPolicy">Policy #</label>
+                <input type="text" id="secondaryPolicy" name="secondaryPolicy" maxlength="34">
+              </div>
+              <div class="form-group">
+                <label for="secondaryGroup">Group #</label>
+                <input type="text" id="secondaryGroup" name="secondaryGroup" maxlength="29">
+              </div>
+            </div>
+          </div>
+
+          <!-- PHYSICIAN INFORMATION -->
+          <div class="form-section">
+            <div class="form-section-title">Physician Information</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="referringPhysician">Referring Physician *</label>
+                <input type="text" id="referringPhysician" name="referringPhysician" maxlength="33" required>
+              </div>
+              <div class="form-group">
+                <label for="referringPhone">Phone</label>
+                <input type="tel" id="referringPhone" name="referringPhone">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="primaryPhysician">Primary Physician</label>
+                <input type="text" id="primaryPhysician" name="primaryPhysician" maxlength="33">
+              </div>
+              <div class="form-group">
+                <label for="primaryPhysicianPhone">Phone</label>
+                <input type="tel" id="primaryPhysicianPhone" name="primaryPhysicianPhone">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="diabeticPhysician">Diabetic Physician</label>
+                <input type="text" id="diabeticPhysician" name="diabeticPhysician" maxlength="33">
+              </div>
+              <div class="form-group">
+                <label for="diabeticPhysicianPhone">Phone</label>
+                <input type="tel" id="diabeticPhysicianPhone" name="diabeticPhysicianPhone">
+              </div>
+            </div>
+          </div>
+
+          <!-- MEDICAL HISTORY -->
+          <div class="form-section">
+            <div class="form-section-title">Medical History</div>
+            <div class="form-group">
+              <label>General Health *</label>
+              <div class="radio-group">
+                <label><input type="radio" name="generalHealth" value="Excellent" required> Excellent</label>
+                <label><input type="radio" name="generalHealth" value="Good"> Good</label>
+                <label><input type="radio" name="generalHealth" value="Fair"> Fair</label>
+                <label><input type="radio" name="generalHealth" value="Poor"> Poor</label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Tobacco Use</label>
+                <div class="radio-group">
+                  <label><input type="radio" name="tobaccoUse" value="Yes"> Yes</label>
+                  <label><input type="radio" name="tobaccoUse" value="No"> No</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Falls in the last 6 months?</label>
+                <div class="radio-group">
+                  <label><input type="radio" name="falls" value="Yes"> Yes</label>
+                  <label><input type="radio" name="falls" value="No"> No</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Hospital/ER/Urgent Care in last 6 months?</label>
+                <div class="radio-group">
+                  <label><input type="radio" name="hospitalVisit" value="Yes"> Yes</label>
+                  <label><input type="radio" name="hospitalVisit" value="No"> No</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Do you have an amputation?</label>
+                <div class="radio-group">
+                  <label><input type="radio" name="amputation" value="Yes"> Yes</label>
+                  <label><input type="radio" name="amputation" value="No"> No</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Accident from Employment?</label>
+              <div class="radio-group">
+                <label><input type="radio" name="employmentAccident" value="Yes"> Yes</label>
+                <label><input type="radio" name="employmentAccident" value="No"> No</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Auto Accident?</label>
+              <div class="radio-group">
+                <label><input type="radio" name="autoAccident" value="Yes"> Yes</label>
+                <label><input type="radio" name="autoAccident" value="No"> No</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Other Accident / Condition Since Birth?</label>
+              <div class="radio-group">
+                <label><input type="radio" name="otherAccident" value="Yes"> Yes</label>
+                <label><input type="radio" name="otherAccident" value="No"> No</label>
+              </div>
+            </div>
+            <div class="form-row-3">
+              <div class="form-group">
+                <label for="accidentDate">Accident Date</label>
+                <input type="text" id="accidentDate" name="accidentDate" placeholder="MM/YYYY" maxlength="19">
+              </div>
+              <div class="form-group">
+                <label for="accidentState">State</label>
+                <input type="text" id="accidentState" name="accidentState" maxlength="2" placeholder="IL" style="text-transform:uppercase;">
+              </div>
+              <div class="form-group">
+                <label for="accidentDescription">Description</label>
+                <input type="text" id="accidentDescription" name="accidentDescription" maxlength="110">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Have you received a same or similar device in the past 5 years?</label>
+              <div class="radio-group">
+                <label><input type="radio" name="similarDevice" value="Yes"> Yes</label>
+                <label><input type="radio" name="similarDevice" value="No"> No</label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="similarDeviceWhen">If so, when?</label>
+                <input type="text" id="similarDeviceWhen" name="similarDeviceWhen" placeholder="Date or year" maxlength="19">
+              </div>
+              <div class="form-group">
+                <label for="similarDeviceCompany">From what company?</label>
+                <input type="text" id="similarDeviceCompany" name="similarDeviceCompany" maxlength="34">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reasonForVisit">Reason for visit today *</label>
+              <textarea id="reasonForVisit" name="reasonForVisit" rows="2" maxlength="149" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="activities">Activities/Hobbies</label>
+              <input type="text" id="activities" name="activities" maxlength="153">
+            </div>
+
+            <div class="form-group" style="margin-top: 24px;">
+              <label>Patient currently has or has had (check all that apply):</label>
+              <div class="checkbox-grid" style="margin-top: 8px;">
+                <label><input type="checkbox" name="conditions" value="Heart Problems"> Heart Problems</label>
+                <label><input type="checkbox" name="conditions" value="Hepatitis C"> Hepatitis C</label>
+                <label><input type="checkbox" name="conditions" value="Alzheimer Disease"> Alzheimer Disease</label>
+                <label><input type="checkbox" name="conditions" value="Hypertension"> Hypertension</label>
+                <label><input type="checkbox" name="conditions" value="HIV Positive"> HIV Positive</label>
+                <label><input type="checkbox" name="conditions" value="Psychiatric Problems"> Psychiatric Problems</label>
+                <label><input type="checkbox" name="conditions" value="Vascular Disease"> Vascular Disease</label>
+                <label><input type="checkbox" name="conditions" value="Rheumatoid Arthritis"> Rheumatoid Arthritis</label>
+                <label><input type="checkbox" name="conditions" value="Alcoholism"> Alcoholism</label>
+                <label><input type="checkbox" name="conditions" value="Stroke"> Stroke</label>
+                <label><input type="checkbox" name="conditions" value="Obesity"> Obesity</label>
+                <label><input type="checkbox" name="conditions" value="Pacemaker/Defibrillator"> Pacemaker/Defibrillator</label>
+                <label><input type="checkbox" name="conditions" value="Diabetes"> Diabetes</label>
+                <label><input type="checkbox" name="conditions" value="Osteoarthritis"> Osteoarthritis</label>
+                <label><input type="checkbox" name="conditions" value="Seizure Disorder"> Seizure Disorder</label>
+                <label><input type="checkbox" name="conditions" value="Kidney Disease"> Kidney Disease</label>
+                <label><input type="checkbox" name="conditions" value="Pulmonary Disease (TB)"> Pulmonary Disease (TB)</label>
+                <label><input type="checkbox" name="conditions" value="Hearing Loss"> Hearing Loss</label>
+                <label><input type="checkbox" name="conditions" value="Osteoporosis"> Osteoporosis</label>
+                <label><input type="checkbox" name="conditions" value="Vision Problems"> Vision Problems</label>
+                <label><input type="checkbox" name="conditions" value="Currently Pregnant"> Currently Pregnant</label>
+                <label><input type="checkbox" name="conditions" value="Hepatitis A or B"> Hepatitis A or B</label>
+                <label><input type="checkbox" name="conditions" value="Parkinson Disease"> Parkinson Disease</label>
+                <label><input type="checkbox" name="conditions" value="MRSA"> MRSA</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="otherHealthIssues">Any other health issues we should know about?</label>
+              <textarea id="otherHealthIssues" name="otherHealthIssues" rows="2" maxlength="48"></textarea>
+            </div>
+          </div>
+
+          <!-- AGREEMENTS & SIGNATURE -->
+          <div class="form-section">
+            <div class="form-section-title">Agreements & Signature</div>
+
+            <div style="margin-bottom: 20px;">
+              <strong style="font-size: 14px; color: var(--dark-gray);">HIPAA / Release of Information</strong>
+              <div class="legal-text">
+                <strong>Notice of Privacy Practices:</strong> You have the right to read our Notice of Privacy Practices before you decide whether to sign this Consent. Our Notice provides a description of our treatment, payment activities, and healthcare operations, and the uses and disclosures we may make of your protected health information, and of other important matters about your protected health information. We encourage you to read it carefully and completely before signing this Consent.<br><br>
+                <strong>Purpose of Consent:</strong> By signing this form, you consent for Kinetic O & P LTD to use and disclosure of your protected health information to carry out treatment, payment activities, and healthcare operations. This includes release of information from your physicians, therapists, and others involved in the care and treatment.
+              </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+              <strong style="font-size: 14px; color: var(--dark-gray);">Warranty Policy</strong>
+              <div class="legal-text">
+                The products and/or services provided to you by Kinetic O & P LTD are subject to the conditions and limitations of the Kinetic O & P LTD Warranty Policy.<br><br>
+                The warranty period for custom orthoses and prostheses is three months for workmanship and materials. Needed adjustments or repairs within the warranty period will be done at no charge. Within the warranty period, there will be a charge for adjustments or repairs that are a result of abuse, undue rough wear or physical changes of the wearer. If the device is altered by anyone other than Kinetic O & P LTD, the warranty does not apply. Componentry is warranted for a period of one year or for the period of time expressed by the manufacturer.<br><br>
+                Failure to contact Kinetic O & P LTD about fitting problems, or other concerns, or non-use of the device does not absolve the patient from responsibility of payment. Since the device is custom fabricated and prescribed by your physician, it cannot be returned for credit on the account. Prescribed "off-the-shelf" items cannot be returned for hygienic reasons.
+              </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+              <strong style="font-size: 14px; color: var(--dark-gray);">Assignment of Benefits</strong>
+              <div class="legal-text">
+                I authorize my insurance company to pay benefits directly to Kinetic O & P LTD. I understand my insurance company may not pay for services that are not a covered benefit or are not considered medically necessary. I also understand that there may be benefit limitations with no-fault carriers as deductibles and benefit maximums may apply. I agree to be financially responsible for all services provided by Kinetic O & P LTD.
+              </div>
+            </div>
+
+            <div class="consent-check">
+              <input type="checkbox" id="agreeTerms" required>
+              <span>I have read, understood, and hereby agree to all the terms stated above including HIPAA Release of Information, Warranty Policy, Complaint Resolution, and Assignment of Benefits. *</span>
+            </div>
+
+            <div class="form-group">
+              <label>I authorize Kinetic O & P LTD to leave messages on my cell phone / home phone and/or contact me by email.</label>
+              <div class="radio-group">
+                <label><input type="radio" name="communicationAuth" value="Yes" required> Yes</label>
+                <label><input type="radio" name="communicationAuth" value="No"> No</label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="signatureName">Printed Name (Patient or Representative) *</label>
+                <input type="text" id="signatureName" name="signatureName" required>
+              </div>
+              <div class="form-group">
+                <label for="signatureRelation">Relation to Patient (if representative)</label>
+                <input type="text" id="signatureRelation" name="signatureRelation" placeholder="Self, Parent, Guardian, etc.">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="signatureDate">Date *</label>
+              <input type="date" id="signatureDate" name="signatureDate" required>
+            </div>
+          </div>
+
+          <!-- SUBMIT -->
+          <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%; justify-content: center; padding: 18px 32px; font-size: 17px;">
+            Submit Intake Form
+          </button>
+          <p style="font-size: 13px; color: var(--medium-gray); margin-top: 12px; text-align: center;">
+            Your completed form will be emailed to our office as a PDF attachment.
+          </p>
+
+          <div id="form-error" style="display:none; background:#fef2f2; border:1px solid #fca5a5; border-radius:12px; padding:24px; text-align:center; margin-top:16px;">
+            <p style="color:#991b1b; font-weight:600; font-size:16px; margin:0;">Something went wrong. Please call us at (815) 401-7260 or email info@kineticop.com.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div id="site-footer"></div>
+  <script>fetch('footer.html').then(r=>r.text()).then(h=>document.getElementById('site-footer').innerHTML=h);</script>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('siteNav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('show');
+      });
+    });
+    lucide.createIcons();
+
+    // Phone formatting for all tel inputs
+    document.querySelectorAll('input[type="tel"]').forEach(function(input) {
+      input.addEventListener('input', function(e) {
+        var x = e.target.value.replace(/\D/g, '').substring(0, 10);
+        var a = x.substring(0, 3);
+        var b = x.substring(3, 6);
+        var c = x.substring(6, 10);
+        if (x.length > 6) e.target.value = '(' + a + ') ' + b + '-' + c;
+        else if (x.length > 3) e.target.value = '(' + a + ') ' + b;
+        else if (x.length > 0) e.target.value = '(' + a;
+      });
+    });
+
+    // Auto-fill signature date with today
+    document.getElementById('signatureDate').valueAsDate = new Date();
+
+    // Form submission
+    document.getElementById('intakeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+
+      var formData = new FormData(this);
+
+      // Collect checkboxes
+      var conditions = [];
+      document.querySelectorAll('input[name="conditions"]:checked').forEach(function(cb) {
+        conditions.push(cb.value);
+      });
+      formData.set('conditions', conditions.join(', ') || 'None');
+      formData.set('formType', 'intake');
+
+      fetch('https://kineticop-contact.kineticop1958.workers.dev', {
+        method: 'POST',
+        body: formData,
+      })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data.success) {
+            window.location.href = 'thank-you.html';
+          } else {
+            throw new Error('Send failed');
+          }
+        })
+        .catch(function() {
+          btn.disabled = false;
+          btn.textContent = 'Submit Intake Form';
+          document.getElementById('form-error').style.display = 'block';
+        });
+    });
+  </script>
+  <script>document.querySelectorAll('img').forEach(function(i){if(i.src.includes('/img/'))i.src=i.src.split('?')[0]+'?v='+document.lastModified;});</script>
+  <script src="js/theme.js"></script>
+</body>
+</html>
