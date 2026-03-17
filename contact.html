@@ -135,6 +135,8 @@
     }
   </style>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script>function onTurnstileSuccess(){document.getElementById('submitBtn').disabled=false;}</script>
 </head>
 <body>
 
@@ -303,7 +305,11 @@
               <input type="file" id="file" name="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="padding: 12px;">
             </div>
 
-            <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%; justify-content: center;">
+            <div style="position:absolute;left:-9999px;"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAACsX-az0PxThiUFe" data-callback="onTurnstileSuccess"></div>
+
+            <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%; justify-content: center;" disabled>
               Send Message
             </button>
             <p style="font-size: 13px; color: var(--medium-gray); margin-top: 12px; text-align: center;">

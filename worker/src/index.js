@@ -406,6 +406,27 @@ export default {
 
     try {
       const formData = await request.formData();
+
+      // Honeypot check — if filled, it's a bot
+      const honeypot = formData.get('website');
+      if (honeypot) {
+        return jsonResponse({ success: true }); // silently pretend success
+      }
+
+      // Turnstile verification
+      const turnstileToken = formData.get('cf-turnstile-response');
+      if (turnstileToken && env.TURNSTILE_SECRET) {
+        const turnstileRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `secret=${env.TURNSTILE_SECRET}&response=${turnstileToken}`,
+        });
+        const turnstileData = await turnstileRes.json();
+        if (!turnstileData.success) {
+          return jsonResponse({ success: false, error: 'Bot verification failed' }, 403);
+        }
+      }
+
       const formType = formData.get('formType');
 
       let payload;

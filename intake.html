@@ -9,6 +9,8 @@
   <link rel="canonical" href="https://kineticop1958-lab.github.io/kineticop/intake.html">
   <link rel="stylesheet" href="css/styles.css?v=3">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script>function onTurnstileSuccess(){document.getElementById('submitBtn').disabled=false;}</script>
   <style>
     .intake-form {
       max-width: 800px;
@@ -609,8 +611,12 @@
             </div>
           </div>
 
+          <div style="position:absolute;left:-9999px;"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAACsX-az0PxThiUFe" data-callback="onTurnstileSuccess" style="margin-bottom:16px;"></div>
+
           <!-- SUBMIT -->
-          <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%; justify-content: center; padding: 18px 32px; font-size: 17px;">
+          <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%; justify-content: center; padding: 18px 32px; font-size: 17px;" disabled>
             Submit Intake Form
           </button>
           <p style="font-size: 13px; color: var(--medium-gray); margin-top: 12px; text-align: center;">
