@@ -432,11 +432,17 @@ export default {
 
       const formType = formData.get('formType');
 
+      const isTest = formData.get('isTest') === 'true';
+
       let payload;
       if (formType === 'intake') {
         payload = await handleIntakeForm(formData, env);
       } else {
         payload = await handleContactForm(formData, env);
+      }
+
+      if (isTest) {
+        payload.subject = '[TEST] ' + payload.subject;
       }
 
       const res = await fetch('https://api.resend.com/emails', {
