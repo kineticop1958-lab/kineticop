@@ -413,9 +413,12 @@ export default {
         return jsonResponse({ success: true }); // silently pretend success
       }
 
-      // Turnstile verification
+      // Turnstile verification — required for all submissions
       const turnstileToken = formData.get('cf-turnstile-response');
-      if (turnstileToken && env.TURNSTILE_SECRET) {
+      if (!turnstileToken) {
+        return jsonResponse({ success: false, error: 'Verification required' }, 403);
+      }
+      if (env.TURNSTILE_SECRET) {
         const turnstileRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
