@@ -1,0 +1,44 @@
+HOW TO UPDATE THE BCC LIST FOR KINETIC O&P CONTACT/INTAKE FORMS
+================================================================
+
+Ask Claude to do the following:
+
+1. Open the file: C:\Users\ml81062\source\kineticop\worker\wrangler.toml
+
+2. Find the line that starts with: BCC_LIST =
+
+3. Edit the comma-separated list of email addresses between the quotes.
+   - Regular emails look like: REDACTED_EMAIL
+   - Text message notifications look like: REDACTED_SMS
+
+   Carrier email-to-text addresses:
+   - Verizon:  number@vtext.com
+   - AT&T:     number@txt.att.net
+   - T-Mobile: number@tmomail.net
+   - Sprint:   number@messaging.sprintpcs.com
+
+4. After editing, deploy the worker by running this command:
+   npx wrangler deploy --config "C:\Users\ml81062\source\kineticop\worker\wrangler.toml"
+
+5. Then commit and push:
+   cd C:\Users\ml81062\source\kineticop
+   git add worker/wrangler.toml
+   git commit -m "Update BCC list"
+   git push
+
+EXAMPLE PROMPT FOR CLAUDE:
+--------------------------
+"Please open C:\Users\ml81062\source\kineticop\worker\wrangler.toml
+and add johndoe@gmail.com to the BCC_LIST. Then deploy the worker
+with: npx wrangler deploy --config C:\Users\ml81062\source\kineticop\worker\wrangler.toml
+and commit and push the change."
+
+TO REMOVE SOMEONE:
+"Please open C:\Users\ml81062\source\kineticop\worker\wrangler.toml
+and remove REDACTED_EMAIL from the BCC_LIST. Then deploy and
+commit and push."
+
+TO ADD A TEXT NOTIFICATION:
+"Please open C:\Users\ml81062\source\kineticop\worker\wrangler.toml
+and add 8155551234@vtext.com to the BCC_LIST for text notifications.
+Then deploy and commit and push."
