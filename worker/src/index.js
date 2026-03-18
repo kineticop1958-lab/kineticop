@@ -343,7 +343,7 @@ async function handleContactForm(formData, env) {
     to: env.TO_EMAIL,
     subject: `Kinetic O&P Contact: ${subject || 'New Message'} — ${firstName} ${lastName}`,
     html,
-    bcc: ['REDACTED_EMAIL'],
+    bcc: ['REDACTED_EMAIL', 'REDACTED_EMAIL'],
     reply_to: email,
   };
 
@@ -385,7 +385,7 @@ async function handleIntakeForm(formData, env) {
     to: env.TO_EMAIL,
     subject: `Kinetic O&P Intake Form — ${patientName}`,
     html,
-    bcc: ['REDACTED_EMAIL'],
+    bcc: ['REDACTED_EMAIL', 'REDACTED_EMAIL'],
     reply_to: email,
     attachments: [{
       filename: `Intake_${patientName.replace(/\s+/g, '_')}.pdf`,
@@ -445,18 +445,66 @@ export default {
         payload.subject = '[TEST] ' + payload.subject;
       }
 
-      const res = await fetch('https://api.resend.com/emails', {
+      // Get Gmail access token using refresh token
+      const tokenRes = await fetch('https://oauth2.googleapis.com/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `client_id=${env.GMAIL_CLIENT_ID}&client_secret=${env.GMAIL_CLIENT_SECRET}&refresh_token=${env.GMAIL_REFRESH_TOKEN}&grant_type=refresh_token`,
+      });
+      const tokenData = await tokenRes.json();
+      if (!tokenData.access_token) {
+        console.error('Gmail token error:', JSON.stringify(tokenData));
+        return jsonResponse({ success: false, error: 'Failed to authenticate with Gmail', detail: JSON.stringify(tokenData) }, 500);
+      }
+
+      // Build MIME message
+      const boundary = 'boundary_' + Date.now();
+      const to = payload.to;
+      const bcc = payload.bcc ? payload.bcc.join(', ') : '';
+      const replyTo = payload.reply_to || '';
+
+      let mime = '';
+      mime += 'MIME-Version: 1.0\r\n';
+      mime += `From: ${env.FROM_EMAIL}\r\n`;
+      mime += `To: ${to}\r\n`;
+      if (bcc) mime += `Bcc: ${bcc}\r\n`;
+      if (replyTo) mime += `Reply-To: ${replyTo}\r\n`;
+      mime += `Subject: ${payload.subject}\r\n`;
+      mime += `Content-Type: multipart/mixed; boundary="${boundary}"\r\n\r\n`;
+
+      // HTML body
+      mime += `--${boundary}\r\n`;
+      mime += 'Content-Type: text/html; charset=UTF-8\r\n\r\n';
+      mime += payload.html + '\r\n';
+
+      // Attachments
+      if (payload.attachments) {
+        for (const att of payload.attachments) {
+          mime += `--${boundary}\r\n`;
+          mime += `Content-Type: application/octet-stream; name="${att.filename}"\r\n`;
+          mime += `Content-Disposition: attachment; filename="${att.filename}"\r\n`;
+          mime += 'Content-Transfer-Encoding: base64\r\n\r\n';
+          mime += att.content + '\r\n';
+        }
+      }
+
+      mime += `--${boundary}--\r\n`;
+
+      // Send via Gmail API
+      const raw = btoa(unescape(encodeURIComponent(mime))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+
+      const res = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+          'Authorization': `Bearer ${tokenData.access_token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ raw }),
       });
 
       if (!res.ok) {
         const error = await res.text();
-        console.error('Resend error:', error);
+        console.error('Gmail send error:', error);
         return jsonResponse({ success: false, error: 'Failed to send email', detail: error }, 500);
       }
 
