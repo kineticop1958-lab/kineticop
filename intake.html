@@ -247,25 +247,25 @@
             <div class="form-section-title">Patient Information</div>
             <div class="form-row">
               <div class="form-group">
-                <label for="patientName">Patient Name *</label>
+                <label for="patientName">Patient Name <span class="required-star">*</span></label>
                 <input type="text" id="patientName" name="patientName" maxlength="51" required>
               </div>
               <div class="form-group">
-                <label for="dob">Date of Birth *</label>
+                <label for="dob">Date of Birth <span class="required-star">*</span></label>
                 <input type="date" id="dob" name="dob" required>
               </div>
             </div>
             <div class="form-group">
-              <label for="address">Address *</label>
+              <label for="address">Address <span class="required-star">*</span></label>
               <input type="text" id="address" name="address" maxlength="74" required>
             </div>
             <div class="form-row-3">
               <div class="form-group">
-                <label for="city">City *</label>
+                <label for="city">City <span class="required-star">*</span></label>
                 <input type="text" id="city" name="city" maxlength="44" required>
               </div>
               <div class="form-group">
-                <label for="state">State *</label>
+                <label for="state">State <span class="required-star">*</span></label>
                 <div class="state-typeahead">
                   <input type="text" id="stateDisplay" placeholder="Type state..." autocomplete="off" required>
                   <input type="hidden" id="state" name="state">
@@ -273,13 +273,13 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="zip">ZIP *</label>
+                <label for="zip">ZIP <span class="required-star">*</span></label>
                 <input type="text" id="zip" name="zip" maxlength="15" placeholder="60914" required>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="cellPhone">Cell Phone *</label>
+                <label for="cellPhone">Cell Phone <span class="required-star">*</span></label>
                 <input type="tel" id="cellPhone" name="cellPhone" placeholder="(___) ___-____" required>
               </div>
               <div class="form-group">
@@ -289,31 +289,31 @@
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="emergencyName">Emergency Contact Name *</label>
+                <label for="emergencyName">Emergency Contact Name <span class="required-star">*</span></label>
                 <input type="text" id="emergencyName" name="emergencyName" maxlength="30" required>
               </div>
               <div class="form-group">
-                <label for="emergencyPhone">Emergency Contact Phone *</label>
+                <label for="emergencyPhone">Emergency Contact Phone <span class="required-star">*</span></label>
                 <input type="tel" id="emergencyPhone" name="emergencyPhone" placeholder="(___) ___-____" required>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="email">Email *</label>
+                <label for="email">Email <span class="required-star">*</span></label>
                 <input type="email" id="email" name="email" maxlength="78" placeholder="your@email.com" required style="text-transform:lowercase;">
               </div>
             </div>
             <div class="form-row-4">
               <div class="form-group">
-                <label for="height">Height *</label>
+                <label for="height">Height <span class="required-star">*</span></label>
                 <input type="text" id="height" name="height" placeholder="5' 8&quot;" maxlength="16" required>
               </div>
               <div class="form-group">
-                <label for="weight">Weight *</label>
+                <label for="weight">Weight <span class="required-star">*</span></label>
                 <input type="text" id="weight" name="weight" placeholder="lbs" maxlength="11" required>
               </div>
               <div class="form-group" style="grid-column: span 2;">
-                <label>Diabetic *</label>
+                <label>Diabetic <span class="required-star">*</span></label>
                 <div class="radio-group">
                   <label><input type="radio" name="diabetic" value="Yes" required> Yes</label>
                   <label><input type="radio" name="diabetic" value="No"> No</label>
@@ -327,7 +327,7 @@
             <div class="form-section-title">Primary Insurance</div>
             <div class="form-row">
               <div class="form-group">
-                <label for="primaryInsurance">Primary Insurance *</label>
+                <label for="primaryInsurance">Primary Insurance <span class="required-star">*</span></label>
                 <input type="text" id="primaryInsurance" name="primaryInsurance" maxlength="64" required>
               </div>
               <div class="form-group">
@@ -337,7 +337,7 @@
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="primaryPolicy">Policy # *</label>
+                <label for="primaryPolicy">Policy # <span class="required-star">*</span></label>
                 <input type="text" id="primaryPolicy" name="primaryPolicy" maxlength="34" required>
               </div>
               <div class="form-group">
@@ -377,7 +377,7 @@
             <div class="form-section-title">Physician Information</div>
             <div class="form-row">
               <div class="form-group">
-                <label for="referringPhysician">Referring Physician *</label>
+                <label for="referringPhysician">Referring Physician <span class="required-star">*</span></label>
                 <input type="text" id="referringPhysician" name="referringPhysician" maxlength="33" required>
               </div>
               <div class="form-group">
@@ -411,7 +411,7 @@
           <div class="form-section">
             <div class="form-section-title">Medical History</div>
             <div class="form-group">
-              <label>General Health *</label>
+              <label>General Health <span class="required-star">*</span></label>
               <div class="radio-group">
                 <label><input type="radio" name="generalHealth" value="Excellent" required> Excellent</label>
                 <label><input type="radio" name="generalHealth" value="Good"> Good</label>
@@ -511,7 +511,7 @@
             </div>
 
             <div class="form-group">
-              <label for="reasonForVisit">Reason for visit today *</label>
+              <label for="reasonForVisit">Reason for visit today <span class="required-star">*</span></label>
               <textarea id="reasonForVisit" name="reasonForVisit" rows="2" maxlength="149" required></textarea>
             </div>
             <div class="form-group">
@@ -597,7 +597,7 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label for="signatureName">Printed Name (Patient or Representative) *</label>
+                <label for="signatureName">Printed Name (Patient or Representative) <span class="required-star">*</span></label>
                 <input type="text" id="signatureName" name="signatureName" required>
               </div>
               <div class="form-group">
@@ -606,7 +606,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="signatureDate">Date *</label>
+              <label for="signatureDate">Date <span class="required-star">*</span></label>
               <input type="date" id="signatureDate" name="signatureDate" required>
             </div>
           </div>
