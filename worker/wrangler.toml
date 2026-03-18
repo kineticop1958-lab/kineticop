@@ -3,8 +3,6 @@ main = "src/index.js"
 compatibility_date = "2024-01-01"
 
 [vars]
-TO_EMAIL = "info@kineticop.com"
-FROM_EMAIL = "REDACTED_EMAIL"
 REDIRECT_URL = "https://kineticop1958-lab.github.io/kineticop/thank-you.html"
-BCC_LIST = "REDACTED_EMAIL, REDACTED_EMAIL, REDACTED_SMS, REDACTED_SMS"
+# TO_EMAIL, FROM_EMAIL, and BCC_LIST are stored as Cloudflare secrets
 # RESEND_API_KEY is stored as a Cloudflare secret (not in code)
