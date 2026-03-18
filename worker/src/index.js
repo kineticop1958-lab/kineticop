@@ -484,14 +484,24 @@ export default {
           mime += `Content-Type: application/octet-stream; name="${att.filename}"\r\n`;
           mime += `Content-Disposition: attachment; filename="${att.filename}"\r\n`;
           mime += 'Content-Transfer-Encoding: base64\r\n\r\n';
-          mime += att.content + '\r\n';
+          // Break base64 into 76-char lines per MIME spec
+          const b64 = att.content;
+          for (let i = 0; i < b64.length; i += 76) {
+            mime += b64.substring(i, i + 76) + '\r\n';
+          }
         }
       }
 
       mime += `--${boundary}--\r\n`;
 
-      // Send via Gmail API
-      const raw = btoa(unescape(encodeURIComponent(mime))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+      // Send via Gmail API - encode MIME as base64url
+      const encoder = new TextEncoder();
+      const mimeBytes = encoder.encode(mime);
+      let binaryStr = '';
+      for (let i = 0; i < mimeBytes.length; i++) {
+        binaryStr += String.fromCharCode(mimeBytes[i]);
+      }
+      const raw = btoa(binaryStr).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 
       const res = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
         method: 'POST',
