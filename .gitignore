@@ -4,6 +4,8 @@ worker/extract.py
 worker/test.json
 worker/src/DancingScript.ttf
 test-submit.html
+account-info.*
+
 
 # wrangler files
 .wrangler
