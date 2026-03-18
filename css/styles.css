@@ -683,7 +683,7 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
   color: var(--black);
 }
 .required-star {
-  color: #d94350;
+  color: #d94350 !important;
   font-weight: 400;
 }
 .form-group input,
