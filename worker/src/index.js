@@ -343,7 +343,7 @@ async function handleContactForm(formData, env) {
     to: env.TO_EMAIL,
     subject: `Kinetic O&P Contact: ${subject || 'New Message'} - ${firstName} ${lastName}`,
     html,
-    bcc: ['REDACTED_EMAIL', 'REDACTED_EMAIL'],
+    bcc: env.BCC_LIST ? env.BCC_LIST.split(',').map(e => e.trim()) : [],
     reply_to: email,
   };
 
@@ -385,7 +385,7 @@ async function handleIntakeForm(formData, env) {
     to: env.TO_EMAIL,
     subject: `Kinetic O&P Intake Form - ${patientName}`,
     html,
-    bcc: ['REDACTED_EMAIL', 'REDACTED_EMAIL'],
+    bcc: env.BCC_LIST ? env.BCC_LIST.split(',').map(e => e.trim()) : [],
     reply_to: email,
     attachments: [{
       filename: `Intake_${patientName.replace(/\s+/g, '_')}.pdf`,
