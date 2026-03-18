@@ -341,7 +341,7 @@ async function handleContactForm(formData, env) {
   const payload = {
     from: env.FROM_EMAIL,
     to: env.TO_EMAIL,
-    subject: `Kinetic O&P Contact: ${subject || 'New Message'} — ${firstName} ${lastName}`,
+    subject: `Kinetic O&P Contact: ${subject || 'New Message'} - ${firstName} ${lastName}`,
     html,
     bcc: ['REDACTED_EMAIL', 'REDACTED_EMAIL'],
     reply_to: email,
@@ -383,7 +383,7 @@ async function handleIntakeForm(formData, env) {
   return {
     from: env.FROM_EMAIL,
     to: env.TO_EMAIL,
-    subject: `Kinetic O&P Intake Form — ${patientName}`,
+    subject: `Kinetic O&P Intake Form - ${patientName}`,
     html,
     bcc: ['REDACTED_EMAIL', 'REDACTED_EMAIL'],
     reply_to: email,
@@ -469,7 +469,9 @@ export default {
       mime += `To: ${to}\r\n`;
       if (bcc) mime += `Bcc: ${bcc}\r\n`;
       if (replyTo) mime += `Reply-To: ${replyTo}\r\n`;
-      mime += `Subject: ${payload.subject}\r\n`;
+      // Encode subject as UTF-8 base64 for MIME
+      const subjectB64 = btoa(unescape(encodeURIComponent(payload.subject)));
+      mime += `Subject: =?UTF-8?B?${subjectB64}?=\r\n`;
       mime += `Content-Type: multipart/mixed; boundary="${boundary}"\r\n\r\n`;
 
       // HTML body
