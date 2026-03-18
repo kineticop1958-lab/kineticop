@@ -237,11 +237,11 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
 .nav-facebook {
   display: flex;
   align-items: center;
-  color: var(--medium-gray);
+  color: #1877F2;
   transition: var(--transition);
 }
 .nav-facebook:hover {
-  color: var(--red);
+  color: #0d5bbf;
 }
 
 .nav-cta .btn {
