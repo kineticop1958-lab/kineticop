@@ -253,69 +253,17 @@
           </div>
         </div>
 
-        <!-- Right: Contact Form -->
+        <!-- Right: Contact Form (temporarily replaced with email link) -->
         <div class="form-card">
           <h3>Send Us a Message</h3>
-          <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+          <p>Click below to send us an email. We'll get back to you as soon as possible.</p>
 
-          <form class="contact-form" id="contactForm" style="max-width: 100%;">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="firstName">First Name *</label>
-                <input type="text" id="firstName" name="firstName" placeholder="Your first name" required>
-              </div>
-              <div class="form-group">
-                <label for="lastName">Last Name *</label>
-                <input type="text" id="lastName" name="lastName" placeholder="Your last name" required>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" required>
-            </div>
-
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="(___) ___-____">
-            </div>
-
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <select id="subject" name="subject">
-                <option value="">Select a topic...</option>
-                <option value="New Patient Inquiry">New Patient Inquiry</option>
-                <option value="Existing Patient">Existing Patient</option>
-                <option value="Prosthetics">Prosthetics</option>
-                <option value="Orthotics">Orthotics</option>
-                <option value="Diabetic Footwear">Diabetic Footwear</option>
-                <option value="Riverside P&O Clinic">Riverside P&amp;O Clinic</option>
-                <option value="Insurance Question">Insurance Question</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="message">Message *</label>
-              <textarea id="message" name="message" placeholder="How can we help you?" required></textarea>
-            </div>
-
-            <div class="form-group">
-              <label for="file">Attach File <span style="font-weight:400; color: var(--medium-gray);">(optional — intake forms, documents, etc.)</span></label>
-              <input type="file" id="file" name="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="padding: 12px;">
-            </div>
-
-            <div style="position:absolute;left:-9999px;"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
-
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAACsX-az0PxThiUFe" data-callback="onTurnstileSuccess"></div>
-
-            <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%; justify-content: center;" disabled>
-              Send Message
-            </button>
-            <p style="font-size: 13px; color: var(--medium-gray); margin-top: 12px; text-align: center;">
-              We typically respond within 1 business day.
-            </p>
-          </form>
+          <a href="mailto:info@kineticop.com?subject=Website%20Inquiry" class="btn btn-primary" style="width: 100%; justify-content: center; text-align: center;">
+            Email Us
+          </a>
+          <p style="font-size: 13px; color: var(--medium-gray); margin-top: 12px; text-align: center;">
+            We typically respond within 1 business day.
+          </p>
 
           <div id="form-error" style="display:none; background:#fef2f2; border:1px solid #fca5a5; border-radius:12px; padding:24px; text-align:center; margin-top:16px;">
             <p style="color:#991b1b; font-weight:600; font-size:16px; margin:0;">Something went wrong. Please call us at (815) 401-7260 or email info@kineticop.com.</p>
