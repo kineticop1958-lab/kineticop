@@ -2,15 +2,15 @@ HOW TO UPDATE THE BCC LIST FOR KINETIC O&P CONTACT/INTAKE FORMS
 ================================================================
 
 The BCC list is stored as a Cloudflare secret (not in code).
-To update it, run this command with the full updated list:
+To update it, run a command with the full updated list.
 
 STEP 1 - Update the secret (replace the list with your full updated list):
 cd C:\Users\ml81062\source\kineticop\worker
-echo "email1@example.com, email2@example.com, 5551234567@vtext.com" | npx wrangler secret put BCC_LIST
+echo "email1, email2, phonenumber@carrier" | npx wrangler secret put BCC_LIST
 
 STEP 2 - Also update the local .dev.vars file for testing:
 Edit C:\Users\ml81062\source\kineticop\worker\.dev.vars
-and update the BCC_LIST line.
+and update the BCC_LIST line to match.
 
 Carrier email-to-text addresses:
 - Verizon:  number@vtext.com
@@ -21,14 +21,6 @@ Carrier email-to-text addresses:
 EXAMPLE PROMPT FOR CLAUDE:
 --------------------------
 "Please update the BCC list for the Kinetic O&P contact forms.
-Run this command from C:\Users\ml81062\source\kineticop\worker:
-
-echo 'REDACTED_EMAIL, REDACTED_EMAIL, newperson@email.com, 8155551234@vtext.com' | npx wrangler secret put BCC_LIST
-
-Also update the BCC_LIST line in C:\Users\ml81062\source\kineticop\worker\.dev.vars to match."
-
-TO REMOVE SOMEONE:
-"Please update the BCC list and remove REDACTED_EMAIL.
-Run: echo 'REDACTED_EMAIL, REDACTED_SMS, REDACTED_SMS' | npx wrangler secret put BCC_LIST
-from the C:\Users\ml81062\source\kineticop\worker directory.
-Also update .dev.vars to match."
+The new list should be: [provide your full comma-separated list here]
+Run the wrangler secret put command from C:\Users\ml81062\source\kineticop\worker
+and also update the .dev.vars file to match."
